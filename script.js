@@ -21,13 +21,29 @@ function generatePassword(){
   // Password is currently blank! We need to make a better one
   let password = "Hello";
 
-  let passwordLength = prompt("Enter the password length.\n(Min: 8 -- Max: 128 characters.");
+  let passwordLengthEntry = prompt("Enter the password length.\n(Min: 8 -- Max: 128 characters.");
   
-  while (passwordLength < 8 || passwordLength > 128) {
-    passwordLength = prompt("Incorrect LENGTH entered. Enter a new password length.\n(Min: 8 -- Max: 128 characters.");
+  //If the user selects "CANCEL", automatically exits and returns value that is already in 'password'
+  if (passwordLengthEntry === null) {
+    return password;
+  }
+
+  //Evaluates 'passwordLength' to make sure MIN: 8 & MAX: 128. Stays in loop until correct entry or user selects "CANCEL"
+  while (passwordLengthEntry < 8 || passwordLengthEntry > 128) {
+    passwordLengthEntry = prompt("Incorrect LENGTH entered. Enter a new password length.\n(Min: 8 -- Max: 128 characters.");
+    if (passwordLengthEntry === null) {
+      return password;
+    }
   }
   
-  console.log(passwordLength);
+  let lowerCaseEntry = confirm("Included lowercase letter characters?");
+  let upperCaseEntry = confirm("Include uppercase letter characters?");
+  let numbericEntry = confirm("Include numberic characters?");
+  let specialCharacterEntry = confirm("Include special characters?");
+
+
+
+ 
 
 
   //let specialCharacter = [""", "!", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "\", "]", "^",_"`", "{", "|", "}", "~"];
@@ -35,7 +51,7 @@ function generatePassword(){
   //let lowerCase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
   //let upperCase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y, "Z"];
 
-
+  //THEN I choose lowercase, uppercase, numeric, and/or special characters
 
 
   return password;

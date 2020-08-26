@@ -19,8 +19,9 @@ function writePassword() {
 function generatePassword() {
 
   // Password is currently blank! We need to make a better one
-  let password = "Hello";
+  let password = "";
 
+  //Ask the user how long the password length should be
   let passwordLengthEntry = prompt("Enter the password length.\n(Min: 8 -- Max: 128 characters.");
   console.log("Password Length: " + passwordLengthEntry);
 
@@ -51,7 +52,7 @@ function generatePassword() {
   let characterSet = [];
 
 
-  //Confirms if the user wants lowercase, uppercase, numberic and special characters in the password
+  //Confirms if the user wants lowercase and adds the characters to the options
   let lowerCaseEntry = confirm("Include lowercase letter characters?");
   console.log("Lowercase choice: " + lowerCaseEntry);
   if (lowerCaseEntry === true) {
@@ -59,7 +60,7 @@ function generatePassword() {
     console.log(characterSet);
   }
 
-
+  //Confirms if the user wants lowercase and adds the characters to the options
   let upperCaseEntry = confirm("Include uppercase letter characters?");
   console.log("Uppercase choice: " + upperCaseEntry);
   if (upperCaseEntry === true) {
@@ -67,7 +68,7 @@ function generatePassword() {
     console.log(characterSet);
   }
 
-
+  //Confirms if the user wants lowercase and adds the characters to the options
   let numbericEntry = confirm("Include numberic characters?");
   console.log("Numberic choice: " + numbericEntry);
   if (numbericEntry === true) {
@@ -75,7 +76,7 @@ function generatePassword() {
     console.log(characterSet);
   }
 
-
+  //Confirms if the user wants lowercase and adds the characters to the options 
   let specialCharacterEntry = confirm("Include special characters?");
   console.log("Special character choice: " + specialCharacterEntry);
   if (specialCharacterEntry === true) {
@@ -83,6 +84,11 @@ function generatePassword() {
     console.log(characterSet);
   }
 
+  //Loop to select the random characters based on the password length selected
+  for (let i = 0; i < passwordLengthEntry; i++) {
+    password = password + characterSet[Math.floor(Math.random() * characterSet.length)];
+    console.log(password);
+  }
 
   // //Evaluates if the user has selected AT LEAST one option. If not, re-asks the questions until AT LEAST one option is selected 
   // while (lowerCaseEntry === false && upperCaseEntry === false && numbericEntry === false && specialCharacterEntry === false) {
@@ -105,19 +111,7 @@ function generatePassword() {
 
 
 
-  // if (lowerCaseEntry === true) {
-  //   characterSet = characterSet + lowerCase;
-  //   console.log("Characters selected: " + characterSet);
-  // } else if (upperCaseEntry === true) {
-  //   characterSet = characterSet + upperCase;
-  //   console.log("Characters selected: " + characterSet);
-  // } else if (numbericEntry === true) {
-  //   characterSet = characterSet + numbers;
-  //   console.log("Characters selected: " + characterSet);
-  // } else if (specialCharacterEntry === true) {
-  //   characterSet = characterSet + specialCharacter;
-  //   console.log("Characters selected: " + characterSet);
-  // }
+
 
 
 
@@ -126,10 +120,10 @@ function generatePassword() {
   return password;
 }
 
-//let lowerCase = "abcdefghijklmnopqrstuvwxyz";
-//"ABCDEFGHIJKLMNOPQRSTUVWXY"
-//"0123456789"
-//"!@#$%^&*()+=<>?{}[]"
+// let lowerCase = "abcdefghijklmnopqrstuvwxyz";
+// "ABCDEFGHIJKLMNOPQRSTUVWXY"
+// "0123456789"
+// "!@#$%^&*()+=<>?{}[]"
 
 
 
